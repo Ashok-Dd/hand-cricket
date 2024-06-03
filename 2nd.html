@@ -74,7 +74,7 @@
             margin-top: 5%;
         }
         .match h2 {
-            font-size: 2rem;
+            font-size: 2em;
             text-align: center;
         }
         }
@@ -121,8 +121,8 @@
                 if(count==1 && score>score1)
                 {
                     summary='You Won the Match';
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Won</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Lose</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">You Won</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Lose</h2>`;
                     localStorage.setItem('summary',summary);
                     window.location.href = 'last.html';
                 }
@@ -139,8 +139,8 @@
                 if(count==1 && score<score1)
                 {
                     summary='You Lose the Match';
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Lose</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Won</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">You Lose</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Won</h2>`;
                     localStorage.setItem('summary',summary);
                     window.location.href = 'last.html';
                 }
@@ -161,26 +161,26 @@
                 computerChoice = temp;
               
                 if (computerChoice === 'bat') {
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">Start Bowling</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Batting</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">Start Bowling</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Batting</h2>`;
                 }else if(yourChoice==='bat'){
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">Start Batting</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Bowling</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">Start Batting</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Bowling</h2>`;
               
                 }else if(computerChoice==='bowl'){
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">Start Batting</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Bowling</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">Start Batting</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Bowling</h2>`;
               
                 }
                 else if(yourChoice==='bowl') {
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">Start Batting</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Bowling</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">Start Batting</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Bowling</h2>`;
                 }
             } else if (count == 2) {
                 if (score > score1) {
                     summary='You Won the Match';
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Won</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Lose</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">You Won</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Lose</h2>`;
                     localStorage.setItem('summary',summary);
                     window.location.href = 'last.html';
                 } else if (score == score1) {
@@ -191,8 +191,8 @@
                      window.location.href = 'last.html';
                 } else {
                     summary='You Lose the Match';
-                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Lose</h2>`;
-                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Won</h2>`;
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">You Lose</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Won</h2>`;
                     localStorage.setItem('summary',summary);
                     window.location.href = 'last.html';
                 }
