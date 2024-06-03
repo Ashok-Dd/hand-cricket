@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandCricket</title>
+    <style>
+        .match {
+            border: 3px solid black;
+            width: 40%;
+            height: 400px;
+            margin-top: 1%;
+            background-color: beige;
+        }
+        .visual {
+            display: flex;
+            justify-content: space-around;
+        }
+        .score {
+            background-color: aqua;
+            width: 80%;
+            margin-left: 10%;
+            height: 45px;
+            border: 3px solid black;
+            padding: 0%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .score h1 {
+            text-align: center;
+            margin-top: 0%;
+            margin-bottom: 0%;
+        }
+        .chooser {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 2%;
+        }
+        button {
+            width: 200px;
+            height: 200px;
+            font-size: 5em;
+            background-color: lawngreen;
+            transition: background-color 0.3s, font-size 0.3s;
+            color: #14213d;
+            border: none;
+        }
+        button:hover {
+            background-color: yellow;
+            font-size: 6em;
+        }
+        .match h2 {
+            font-size: 3em;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body bgcolor="red">
+    <div id="full-page">
+        <div class="score">
+            <h1 id="you">You: 0</h1>
+            <h1 id="comp">Comp: 0</h1>
+        </div>
+        <div class="visual">
+            <div class="match" id="player">
+                <h2 id="shower"></h2>
+            </div>
+            <div class="match" id="computer">
+                <h2 id="shower1"></h2>
+            </div>
+        </div>
+        <div class="chooser">
+            <div class="opt"> <button onclick="choose('1')">1</button></div> 
+            <div class="opt"> <button onclick="choose('2')">2</button></div> 
+            <div class="opt"> <button onclick="choose('3')">3</button></div> 
+            <div class="opt"> <button onclick="choose('4')">4</button></div> 
+            <div class="opt"> <button onclick="choose('5')">5</button></div> 
+            <div class="opt"> <button onclick="choose('6')">6</button></div> 
+        </div>
+    </div>
+    <script>
+        let yourChoice = localStorage.getItem('inning');
+        let computerChoice = localStorage.getItem('inning1');
+        let score = 0;
+        let score1 = 0;
+        let count = 0;
+        let summary='';
+        function choose(choice) {
+            document.getElementById('shower').innerHTML = `<h2>${choice}</h2>`;
+            let randChoice = computers();
+            document.getElementById('shower1').innerHTML = `<h2>${randChoice}</h2>`;
+
+            if (yourChoice === 'bat' || computerChoice === 'bowl') {
+                score += parseInt(choice);
+                document.getElementById('you').innerHTML = `You: ${score}`;
+                if(count==1 && score>score1)
+                {
+                    summary='You Won the Match';
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Won</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Lose</h2>`;
+                    localStorage.setItem('summary',summary);
+                    window.location.href = 'last.html';
+                }
+                if (choice == randChoice) {
+                    score -= parseInt(choice);
+                    document.getElementById('you').innerHTML = `You: ${score}`;
+                    document.getElementById('shower').innerHTML = `<h2>OUT</h2>`;
+                    count++;
+                    changeInning();
+                }
+            } else {
+                score1 += parseInt(randChoice);
+                document.getElementById('comp').innerHTML = `Comp: ${score1}`;
+                if(count==1 && score<score1)
+                {
+                    summary='You Lose the Match';
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Lose</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Won</h2>`;
+                    localStorage.setItem('summary',summary);
+                    window.location.href = 'last.html';
+                }
+                if (choice == randChoice) {
+                    score1 -= parseInt(randChoice);
+                    document.getElementById('comp').innerHTML = `Comp: ${score1}`;
+                    document.getElementById('shower1').innerHTML = `<h2>OUT</h2>`;
+                    count++;
+                    changeInning();
+                }
+            }
+        }
+
+        function changeInning() {
+            if (count == 1) {
+                let temp = yourChoice;
+                yourChoice = computerChoice;
+                computerChoice = temp;
+              
+                if (computerChoice === 'bat') {
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">Start Bowling</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Batting</h2>`;
+                } else {
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2rem;">Start Batting</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2rem;">Comp Bowling</h2>`;
+                }
+            } else if (count == 2) {
+                if (score > score1) {
+                    summary='You Won the Match';
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Won</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Lose</h2>`;
+                    localStorage.setItem('summary',summary);
+                    window.location.href = 'last.html';
+                } else if (score == score1) {
+                    summary="It's TIE";
+                    document.getElementById('shower').innerHTML = `<h2>TIE</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2>TIE</h2>`;
+                    localStorage.setItem('summary',summary);
+                     window.location.href = 'last.html';
+                } else {
+                    summary='You Lose the Match';
+                    document.getElementById('shower').innerHTML = `<h2 style="font-size : 2em;">You Lose</h2>`;
+                    document.getElementById('shower1').innerHTML = `<h2 style="font-size : 2em;">Comp Won</h2>`;
+                    localStorage.setItem('summary',summary);
+                    window.location.href = 'last.html';
+                }
+              
+            }
+        }
+
+        function computers() {
+            const choices = [1, 2, 3, 4, 5, 6];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+    </script>
+</body>
+</html>

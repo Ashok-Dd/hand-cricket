@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandCricket</title>
+    <style>
+        .toss button {
+            width: 35%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            margin-top: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: lawngreen;
+            transition: background-color 0.3s, font-size 0.3s;
+        }
+        .toss button:hover {
+            background-color: yellow;
+            font-size: 2.5em;
+        }
+        .toss {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .coin-placement {
+            background-color: bisque;
+            width: 80%;
+            height: 540px;
+            text-align: center;
+            border: 3px solid black;
+            margin-left: 10%;
+            position: relative;
+        }
+        .coin-placement h1 {
+            margin-top: 20%;
+            color: #14213d;
+            font-weight: bolder;
+            font-size: 5em;
+        }
+        .start-game {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .start-game button {
+            width: 200px;
+            height: 60px;
+            font-size: 1.5em;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: lightblue;
+            transition: background-color 0.3s, font-size 0.3s;
+        }
+        .start-game button:hover {
+            background-color: lightcoral;
+            font-size: 1.8em;
+        }
+    </style>
+</head>
+<body bgcolor="red">
+    <div class="coin-placement" id="toss-display">
+        <h1>Choose Heads or Tails</h1>
+    </div>
+    <div class="start-game" id="start-game" style="display: none;">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <div class="toss">
+        <button id="heads" onclick="tossAcoin('heads')">Heads</button>
+        <button id="tails" onclick="tossAcoin('tails')">Tails</button>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
